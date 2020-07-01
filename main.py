@@ -171,7 +171,15 @@ def task(string):
         frame2.place_forget()
         label.place_forget()
         response = request.Fetcher()
-        name = string.capitalize()
+
+        if len(string.split(' ')) == 1:
+        	name = string.capitalize()
+        elif len(string.split(' ')) > 1:
+        	values_name = []
+        	for i in string.split(' '):
+        		values_name.append(i.capitalize())
+        	name = ' '.join(values_name)
+
         response.entry = name
         result = response.conclusion()
 
@@ -221,8 +229,15 @@ def pictures(string):
             else:
                 pass
             if f"{string}.png" not in [x for x in os.listdir()]:
-                g = graphs(string.capitalize())
-                g.final
+            	if len(string.split(' ')) == 1:
+            		name = string.capitalize()
+            	elif len(string.split(' ')) > 1:
+            		values_name = []
+            		for i in string.split(' '):
+            			values_name.append(i.capitalize())
+            		name = ' '.join(values_name)
+            	g = graphs(name)
+            	g.final
             else:
                 pass
         storage()
@@ -232,7 +247,7 @@ def pictures(string):
 
         frame2.place_forget()
         label.place_forget()
-        print(os.getcwd())
+        # print(os.getcwd())
 
         global p
         p = tk.PhotoImage(file = f'{string}.png')
@@ -343,6 +358,8 @@ except error:
 
 
 root.mainloop()
+
+
 
 
 
