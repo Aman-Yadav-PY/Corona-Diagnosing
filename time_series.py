@@ -81,6 +81,12 @@ class Tested(time):
 	def district_gui(self):
 		values = di().State()[0]
 
+		# label for district info
+
+		self.Label_d = tk.Label(self.master, text = 'District Corona Info', font=['Algerian', 15, 'bold'])
+		self.Label_d.pack()
+        
+
 		# combobox for state
 		self.combobox1 = ttk.Combobox(self.master, values = values)
 		self.combobox1.set('State')
@@ -90,7 +96,7 @@ class Tested(time):
 			# value for state
 			value = self.combobox1.get()
 			districts = di().districts(value)
-            
+
             # Another combox for district
 			self.combobox = ttk.Combobox(self.master, values = districts)
 			self.combobox.set('Districts')
